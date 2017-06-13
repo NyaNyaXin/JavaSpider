@@ -74,4 +74,12 @@ public class Office {
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate == null ? null : releaseDate.trim();
 	}
+
+	@Override
+	public String toString() {
+		return "Office [officeName=" + officeName + ", companyName=" + companyName + ", salary=" + salary
+				+ ", location=" + location + ", releaseDate=" + releaseDate + "]";
+	}
+	
+	
 }
