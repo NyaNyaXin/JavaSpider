@@ -10,8 +10,6 @@
 
 	<!--使用spring管理所有的业务逻辑组件 -->
 	<context:component-scan base-package="com.cx.spider">
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
 	<!-- 引入数据库配置文件 -->

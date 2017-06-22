@@ -21,8 +21,8 @@ public class HtmlParseServiceImpl implements HtmlParseService {
 	private Office office;
 
 	@Override
-	public List<Office> getOfficeMessage(String city,int page) {
-		url = "http://sou.zhaopin.com/jobs/searchresult.ashx?jl=" + city + "&kw=java&p=" + page;
+	public List<Office> getOfficeMessage(String city,int page,String keyword) {
+		url = "http://sou.zhaopin.com/jobs/searchresult.ashx?jl=" + city + "&kw="+keyword+"&p=" + page;
 		offices = getHtmlDocument(url);
 		System.out.println(offices);
 		return offices;
