@@ -15,6 +15,8 @@ public class OfficeMessageSaveServiceImpl implements OfficeMessageSaveService {
 	@Autowired
 	private OfficeMapper officeMapper;
 	private int i = 0;
+	
+	
 
 	@Override
 	public void saveOfficeMessage(List<Office> offices) {
@@ -23,6 +25,14 @@ public class OfficeMessageSaveServiceImpl implements OfficeMessageSaveService {
 			i++;
 		}
 		System.out.println("插入" + i + "条记录");
+	}
+
+
+
+	@Override
+	public void deleteData() {
+		// TODO Auto-generated method stub
+		officeMapper.deleteAll();
 	}
 
 }

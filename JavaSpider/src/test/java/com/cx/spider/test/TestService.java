@@ -15,13 +15,13 @@ public class TestService {
 
 	private ApplicationContext ctx = null;
 	private HtmlParseService htmlParseService;
-	private OfficeMessageSaveService  officeMessageSaveService;
+	private OfficeMessageSaveService officeMessageSaveService;
 	List<Office> officeMessages = null;
 	{
 		ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		htmlParseService = ctx.getBean(HtmlParseService.class);
 		officeMessageSaveService = ctx.getBean(OfficeMessageSaveService.class);
-		
+
 		officeMessages = new ArrayList<>();
 	}
 
@@ -30,14 +30,18 @@ public class TestService {
 		for (int i = 1; i <= 1; i++) {
 			officeMessages = htmlParseService.getOfficeMessage("北京", i);
 		}
-		
+
 	}
+
 	@Test
 	public void testHtmlParseSave() {
-		for (int i = 1; i <= 90; i++) {
+		// 重置数据表
+		officeMessageSaveService.deleteData();
+		// 保存数据
+		for (int i = 1; i <= 10; i++) {
 			officeMessages = htmlParseService.getOfficeMessage("北京", i);
 			officeMessageSaveService.saveOfficeMessage(officeMessages);
 		}
-		
+
 	}
 }

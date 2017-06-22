@@ -24,7 +24,7 @@ public class HtmlParseServiceImpl implements HtmlParseService {
 	public List<Office> getOfficeMessage(String city,int page) {
 		url = "http://sou.zhaopin.com/jobs/searchresult.ashx?jl=" + city + "&kw=java&p=" + page;
 		offices = getHtmlDocument(url);
-
+		System.out.println(offices);
 		return offices;
 	}
 
@@ -36,6 +36,7 @@ public class HtmlParseServiceImpl implements HtmlParseService {
 			for (Element e : elements) {
 				office = new Office();
 				office.setOfficeName(e.select(".zwmc").text());
+				office.setOfficeUrl(e.select(".zwmc div a").attr("href"));
 				office.setCompanyName(e.select(".gsmc").text());
 				office.setSalary(e.select(".zwyx").text());
 				office.setLocation(e.select(".gzdd").text());

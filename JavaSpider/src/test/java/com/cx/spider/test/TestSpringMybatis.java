@@ -17,8 +17,8 @@ public class TestSpringMybatis {
 	}
 		
 	@Test
-	public void testSpringMybaits() {
-		Office office = new Office("java软件工程师", "baidu", "10000", "上地", "刚刚");
+	public void testSpringMybaits() { 
+		Office office = new Office("java软件工程师", "baidu", "10000", "上地", "刚刚","http://www.baidu.com");
 		officeMapper.insert(office);
 	}
 }
