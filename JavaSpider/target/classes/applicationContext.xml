@@ -47,7 +47,31 @@
 
 	<!-- 扫描所有mapper接口的实现，让这些mapper能够自定注入 base-package指定mapper接口的包 -->
 	<mybatis-spring:scan base-package="com.cx.spider.dao" />
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> <property 
-		name="basePackage" value="com.cx.mybatis.dao"></property> </bean> -->
 
+	<!-- 配置定时作业 -->
+	<bean id="job1"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<bean class="com.cx.spider.main.Main" />
+		</property>
+		<property name="targetMethod" value="savedata" />
+		<property name="concurrent" value="false" /><!-- 作业不并发调度 -->
+	</bean>
+
+	<!-- 配置作业调度的触发方式（触发器） -->
+	<bean id="simpleTrigger"
+		class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="job1" />
+		<property name="startDelay" value="0" /><!-- 调度工厂实例化后，经过0秒开始执行调度 -->
+		<property name="repeatInterval" value="20000" /><!-- 每2秒调度一次 -->
+	</bean>
+
+	<!-- 配置调度工厂 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="simpleTrigger" />
+			</list>
+		</property>
+	</bean>
 </beans>

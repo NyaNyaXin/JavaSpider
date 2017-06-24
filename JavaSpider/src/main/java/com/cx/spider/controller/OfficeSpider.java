@@ -10,14 +10,18 @@ import com.cx.spider.service.HtmlParseService;
 import com.cx.spider.service.OfficeMessageSaveService;
 @Controller
 public class OfficeSpider {
+	
 	@Autowired
 	private HtmlParseService htmlParseService;
 	@Autowired
 	private OfficeMessageSaveService officeMessageSaveService;
 	
 	List<Office> officeMessages = null;
+	
+
 
 	public void spiderOfficeToDb(String keyword,int pageCount,String location) {
+		int count = 0;
 		// 重置数据表
 		officeMessageSaveService.deleteData();
 		// 保存数据
@@ -25,7 +29,9 @@ public class OfficeSpider {
 			// 获取网页数据
 			officeMessages = htmlParseService.getOfficeMessage(location,i,keyword);
 			// 保存数据到数据库
-			officeMessageSaveService.saveOfficeMessage(officeMessages);
+		    count = officeMessageSaveService.saveOfficeMessage(officeMessages);
+		    count+=count;
 		}
+		System.out.println("总共插入"+count+"条数据");
 	}
 }

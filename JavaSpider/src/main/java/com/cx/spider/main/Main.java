@@ -6,9 +6,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.cx.spider.controller.OfficeSpider;
 
 public class Main {
+	
+	private static OfficeSpider officeSpider;	
+	
+	
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-		OfficeSpider officeSpider = ctx.getBean(OfficeSpider.class);
-		officeSpider.spiderOfficeToDb("java",5,"北京");
+		officeSpider = ctx.getBean(OfficeSpider.class);
+	}
+	
+	public void savedata() {
+		officeSpider.spiderOfficeToDb("java",2,"北京");
 	}
 }
