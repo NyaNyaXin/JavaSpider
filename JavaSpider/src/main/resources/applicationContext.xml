@@ -58,19 +58,25 @@
 		<property name="concurrent" value="false" /><!-- 作业不并发调度 -->
 	</bean>
 
-	<!-- 配置作业调度的触发方式（触发器） -->
-	<bean id="simpleTrigger"
+	
+	<!-- <bean id="simpleTrigger"
 		class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
 		<property name="jobDetail" ref="job1" />
-		<property name="startDelay" value="0" /><!-- 调度工厂实例化后，经过0秒开始执行调度 -->
-		<property name="repeatInterval" value="20000" /><!-- 每2秒调度一次 -->
+		<property name="startDelay" value="0" />调度工厂实例化后，经过0秒开始执行调度
+		<property name="repeatInterval" value="20000" />每20秒调度一次
+	</bean> -->
+	<!-- 配置作业调度的触发方式（触发器） 每天0点执行-->
+	<bean class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" id="cronTrigger">
+		<property name="jobDetail" ref="job1" />
+		<property name="startDelay" value="0" />
+		<property name="cronExpression" value="0 0 0 * * ?"></property>
 	</bean>
 
 	<!-- 配置调度工厂 -->
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<ref bean="simpleTrigger" />
+				<ref bean="cronTrigger" />
 			</list>
 		</property>
 	</bean>
