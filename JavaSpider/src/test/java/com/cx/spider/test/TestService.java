@@ -40,7 +40,7 @@ public class TestService {
 		// 重置数据表
 		officeMessageSaveService.deleteData();
 		// 保存数据
-		for (int i = 1; i <= 90; i++) {
+		for (int i = 1; i <= 2; i++) {
 			officeMessages = htmlParseService.getOfficeMessage("北京", i,"c#");
 			officeMessageSaveService.saveOfficeMessage(officeMessages);
 		}
