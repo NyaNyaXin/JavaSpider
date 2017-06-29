@@ -28,9 +28,8 @@ public class OfficeSpider {
 		for (int i = 1; i <= pageCount; i++) {
 			// 获取网页数据
 			officeMessages = htmlParseService.getOfficeMessage(location,i,keyword);
-			// 保存数据到数据库
-		    count = officeMessageSaveService.saveOfficeMessage(officeMessages);
-		    count+=count;
+			// 保存数据到数据库,并返回插入记录数
+		    count += officeMessageSaveService.saveOfficeMessage(officeMessages);
 		}
 		System.out.println("总共插入"+count+"条数据");
 	}

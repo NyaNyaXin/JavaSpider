@@ -13,6 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		officeSpider = ctx.getBean(OfficeSpider.class);
+		officeSpider.spiderOfficeToDb("java",90,"北京");
 	}
 	
 	public void savedata() {
