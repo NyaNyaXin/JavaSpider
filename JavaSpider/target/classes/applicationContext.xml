@@ -54,7 +54,7 @@
 	<!-- 配置定时任务 -->
 	<bean class="com.cx.spider.main.Main" id="main"></bean>
 	<task:scheduled-tasks>
-		<task:scheduled ref="main" method="savedata" cron="0 45 10 * * ?"/>
+		<task:scheduled ref="main" method="savedata" cron="0 0 0 * * ?"/>
 	</task:scheduled-tasks>
 	
 </beans>
