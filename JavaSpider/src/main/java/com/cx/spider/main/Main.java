@@ -17,6 +17,6 @@ public class Main {
 	}
 	
 	public void savedata() {
-		officeSpider.spiderOfficeToDb("java",2,"北京");
+		officeSpider.spiderOfficeToDb("java",90,"北京");
 	}
 }
