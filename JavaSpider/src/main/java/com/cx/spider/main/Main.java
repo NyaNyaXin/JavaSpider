@@ -7,6 +7,7 @@ import com.cx.spider.controller.OfficeSpider;
 
 public class Main {
 	
+	
 	private static OfficeSpider officeSpider;	
 	
 	

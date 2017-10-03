@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<setting name="aggressiveLazyLoading" value="false"/>
 		<!-- 显示的配置全局二级缓存 -->
 		<setting name="cacheEnabled" value="false"/>
+		<setting name="logImpl"  value="LOG4J2"/>
 	</settings>
 
 	<!-- 5.databaseIdProvider支持多数据库厂商 type="DB_VENDOR"：VendorDatabaseIdProvider 
